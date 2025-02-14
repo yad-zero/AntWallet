@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Light/Dark Mode Toggle Styling */
+button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px; /* Ensure font size matches other buttons */
+}
+
+button.r{
+    background-color: rgb(245, 60, 91);
+}
+button.r:hover{
+    background-color: rgb(197, 58, 58);
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Light Mode Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#walletNameInput {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.currencies {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.currency {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 30%;
+}
+
+.currency h2 {
+    margin-bottom: 10px;
+}
+
+input[type="number"], #walletNameInput {
+    padding: 8px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+    .currencies {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .currency {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+}
+/* Style the file input to make it look like the other buttons */
+#fileInput {
+    display: none; /* Hide the default file input button */
+}
+
+.file-upload-btn {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px; /* Set font size to match the other buttons */
+    display: inline-block; /* Ensure button is inline */
+}
+
+.file-upload-btn:hover {
+    background-color: #45a049;
+}
+
+/* Watermark Styling */
+.watermark {
+    position: fixed;
+    bottom: 10px;  /* Positioned at the bottom of the screen */
+    right: 10px;   /* Positioned at the right of the screen */
+    font-size: 1.5rem;  /* Make the text size responsive */
+    color: rgba(0, 0, 0, 0.2);  /* Semi-transparent color */
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    z-index: 9999; /* Ensures it stays on top */
+    pointer-events: none; /* So it doesn't interfere with other elements */
+    user-select: none; /* Prevent text selection */
+}
+
+/* Responsive Adjustments for Watermark */
+@media (max-width: 768px) {
+    .watermark {
+        font-size: 1rem;  /* Slightly smaller text on smaller screens */
+        bottom: 5px;  /* Adjust position on smaller screens */
+        right: 5px;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #222224;
+    color: #ebebf3;
+}
+
+body.dark-mode .container {
+    background-color: #161618;
+}
+
+body.dark-mode button {
+    background-color: #52a577;
+}
+
+body.dark-mode button:hover {
+    background-color: #417a88;
+}
+
+body.dark-mode .file-upload-btn {
+    background-color: #52a577;
+}
+
+body.dark-mode .file-upload-btn:hover {
+    background-color: #417a88;
+}
+
+body.dark-mode button.r {
+    background-color: rgb(248, 38, 73);
+}
+
+body.dark-mode button.r:hover {
+    background-color: rgb(206, 21, 98);
+}
+
+body.dark-mode input {
+    background-color: rgb(72, 71, 83);
+    border: none;
+}
+
+body.dark-mode input::placeholder {
+    color: rgb(187, 187, 190);
+    opacity: 1;
+}
+
+body.dark-mode textarea {
+    background-color: rgb(72, 71, 83);
+    border: none;
+}
+
+body.dark-mode textarea::placeholder {
+    color: rgb(187, 187, 190);
+    opacity: 1;
+}
+
+body.dark-mode .currency {
+    border: none;
+    background-color: #111113;
+}
+
+body.dark-mode #walletNameInput {
+    border: none;
+}
+
+body.dark-mode .watermark {
+    color: rgba(255, 255, 255, 0.2);
+}

@@ -1,66 +1,110 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="src/img/creditcard.png">
-    <title>Ant Wallet | Zero Co.</title>
-    <link rel="stylesheet" href="src/css/main.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>Ant Wallet: <span id="walletName">My Wallet</span></h1>
-            <input type="text" id="walletNameInput" placeholder="Enter Wallet Name" />
-            <button onclick="changeWalletName()">Set Wallet Name</button>
-        </div>
-        <div class="currencies">
-          <div class="currency">
-            <h2>Sugar Cube</h2>
-            <p id="sugarCubeDisplay">You have: 0 Sugar Cubes</p>
-            <input type="number" id="sugarCubeAmount" placeholder="Amount" />
-            <button onclick="updateAmount('sugarCube', 'add')">Add</button>
-            <button onclick="updateAmount('sugarCube', 'remove')">Remove</button>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="icon" type="image/x-icon" href="src/img/creditcard.png">
+      <title>Ant Wallet | Zero Co.</title>
+      <link rel="stylesheet" href="src/css/main.css">
+  </head>
+  <body>
+      <div class="container">
+          <div class="header">
+              <h1>Ant Wallet: <span id="walletName">My Wallet</span></h1>
+              <input type="text" id="walletNameInput" placeholder="Enter Wallet Name" />
+              <button onclick="changeWalletName()">Set Wallet Name</button>
           </div>
-          <div class="currency">
-            <h2>Crumbs</h2>
-            <p id="crumbsDisplay">You have: 0 Crumbs</p>
-            <input type="number" id="crumbsAmount" placeholder="Amount" />
-            <button onclick="updateAmount('crumbs', 'add')">Add</button>
-            <button onclick="updateAmount('crumbs', 'remove')">Remove</button>
+          <div class="currencies">
+            <div class="currency">
+              <h2>Sugar Cube</h2>
+              <p id="sugarCubeDisplay">You have: 0 Sugar Cubes</p>
+              <input type="number" id="sugarCubeAmount" placeholder="Amount" />
+              <button onclick="updateAmount('sugarCube', 'add', document.getElementById('sugarCubeAmount').value)">Add</button>
+              <button onclick="updateAmount('sugarCube', 'remove', document.getElementById('sugarCubeAmount').value)">Remove</button>
+            </div>
+            <div class="currency">
+              <h2>Crumbs</h2>
+              <p id="crumbsDisplay">You have: 0 Crumbs</p>
+              <input type="number" id="crumbsAmount" placeholder="Amount" />
+              <button onclick="updateAmount('crumbs', 'add', document.getElementById('crumbsAmount').value)">Add</button>
+              <button onclick="updateAmount('crumbs', 'remove', document.getElementById('crumbsAmount').value)">Remove</button>
+            </div>
+            <div class="currency">
+                <h2>Pebble</h2>
+                <p id="pebbleDisplay">You have: 0 Pebbles</p>
+                <input type="number" id="pebbleAmount" placeholder="Amount" />
+                <button onclick="updateAmount('pebble', 'add', document.getElementById('pebbleAmount').value)">Add</button>
+                <button onclick="updateAmount('pebble', 'remove', document.getElementById('pebbleAmount').value)">Remove</button>
+            </div>
           </div>
-          <div class="currency">
-              <h2>Pebble</h2>
-              <p id="pebbleDisplay">You have: 0 Pebbles</p>
-              <input type="number" id="pebbleAmount" placeholder="Amount" />
-              <button onclick="updateAmount('pebble', 'add')">Add</button>
-              <button onclick="updateAmount('pebble', 'remove')">Remove</button>
+          <div class="container">
+            <div class="header">
+                <h1>Exchange</h1>
+            </div>
+            <div class="exchange-section">
+                <div class="exchange-container">
+                    <select id="sourceCurrency">
+                        <option value="sugarCube">Sugar Cubes</option>
+                        <option value="crumbs">Crumbs</option>
+                        <option value="pebble">Pebbles</option>
+                    </select>
+                    <input type="number" id="sourceAmount" placeholder="Amount" />
+                    <span>to</span>
+                    <select id="targetCurrency">
+                        <option value="sugarCube">Sugar Cubes</option>
+                        <option value="crumbs">Crumbs</option>
+                        <option value="pebble">Pebbles</option>
+                    </select>
+                    <button onclick="exchangeCurrency()">Exchange</button>
+                </div>
+            </div>
+          </div>        
+          <div class="header">
+            <h1>Transactions</h1>
           </div>
-        </div>
-        <div class="controls">
-          <!-- Save Button -->
-          <button onclick="saveWalletData()">Save Data</button>
-      
-          <!-- Export Data Button -->
-          <button onclick="exportData()">Export Data</button>
-      
-          <!-- Import Data Button -->
-          <button onclick="importData()">Import Data (Text)</button>
-          
-          <!-- Custom File Upload Button -->
-          <label for="fileInput" class="file-upload-btn">Upload JSON File</label>
-          <input type="file" id="fileInput" accept=".json" onchange="handleFileUpload(event)" />
+          <div class="transaction-container">
+            <div class="transaction-controls">
+                <button onclick="addTransaction()" class="f">Add</button>
+                <button id="toggleEditButton" onclick="toggleEditTransaction()" class="y f">Edit</button>
+                <button onclick="removeTransaction()" class="r f">Remove</button>
+            </div>
+            <div class="transaction-section">
+                <div class="transaction-list">
+                    <ul id="transactionList" class="">
+                        <!-- Transaction list will be populated here -->
+                    </ul>
+                </div>
+                <div class="transaction-details">
+                    <div id="transactionDetails">
+                        <!-- Detailed transaction data will be displayed here -->
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="controls">
+            <!-- Save Button -->
+            <button onclick="saveWalletData()">Save Data</button>
+        
+            <!-- Export Data Button -->
+            <button onclick="exportData()">Export Data</button>
+        
+            <!-- Import Data Button -->
+            <button onclick="importData()">Import Data (Text)</button>
+            
+            <!-- Custom File Upload Button -->
+            <label for="fileInput" class="file-upload-btn">Upload JSON File</label>
+            <input type="file" id="fileInput" accept=".json" onchange="handleFileUpload(event)" />
 
-          <!-- Clear Data Button -->
-          <button class="r" onclick="clearData()">Clear Data</button>
-          
-          <textarea id="dataInput" placeholder="Paste imported data here" rows="5"></textarea>
-          
-          <!-- Light/Dark Mode Toggle -->
-          <button onclick="toggleMode()">Toggle Light/Dark Mode</button>
-      </div>      
-    </div>
-    <div class="watermark">Zero Co.</div>
-    <script src="src/js/app.js"></script>
-</body>
-</html>
+            <!-- Clear Data Button -->
+            <button class="r" onclick="clearData()">Clear Data</button>
+            
+            <textarea id="dataInput" placeholder="Paste imported data here" rows="5"></textarea>
+            
+            <!-- Light/Dark Mode Toggle -->
+            <button onclick="toggleMode()">Toggle Light/Dark Mode</button>
+        </div>      
+      </div>
+      <div class="watermark">Zero Co.</div>
+      <script src="src/js/app.js"></script>
+  </body>
+  </html>

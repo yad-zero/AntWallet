@@ -21,8 +21,18 @@ button.r:hover{
     background-color: rgb(197, 58, 58);
 }
 
+button.y{
+    background-color: rgb(240, 211, 50);
+}
+button.y:hover{
+    background-color: rgb(216, 179, 56);
+}
+
 button:hover {
     background-color: #45a049;
+}
+button.f {
+    width: 100%;
 }
 
 /* Light Mode Styles */
@@ -92,6 +102,44 @@ textarea {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    resize: none;
+}
+
+textarea::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+}
+
+/* Track */
+textarea::-webkit-scrollbar-track {
+    background: #0d0d11;
+}
+
+/* Handle */
+textarea::-webkit-scrollbar-thumb {
+    background: #7e8188;
+}
+
+/* Handle on hover */
+textarea::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: move;
+}
+
+input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+select {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 @media (max-width: 768px) {
@@ -149,6 +197,198 @@ textarea {
     }
 }
 
+.transaction-container {
+    display: flex;
+    flex-direction: column; /* Stack the controls and transaction sections vertically */
+    margin-top: 30px;
+}
+
+.transaction-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.transaction-controls button {
+    margin: 0 10px;
+}
+
+.transaction-section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Adjust transaction list and details to be 48% each */
+.transaction-list, .transaction-details {
+    margin: 10px 0;
+    background-color: #f4f4f9; /* Set a background color */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Add scroll functionality to the transaction list */
+.transaction-list {
+    width: 28%; /* Adjust to 48% width */
+    max-height: 350px; /* Set max height for scrolling */
+    overflow-y: auto;  /* Enable vertical scrolling */
+}
+
+.transaction-details {
+    width: 70%;
+}
+
+/* width */
+.transaction-list::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 10px;
+}
+
+/* Track */
+.transaction-list::-webkit-scrollbar-track {
+    background: #0d0d11;
+}
+
+/* Handle */
+.transaction-list::-webkit-scrollbar-thumb {
+    background: #7e8188;
+}
+
+/* Handle on hover */
+.transaction-list::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: move;
+}
+
+.transaction-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.transaction-list li {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #d9ecdc;
+    margin: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.transaction-list li.selected {
+    background-color: #7dd3a8;
+}
+.transaction-list li.selected:hover {
+    background-color: #8ce5aa;
+}
+
+.transaction-list li:hover {
+    background-color: #e2e2e2;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    .transaction-section {
+        flex-direction: column; /* Stack them vertically on smaller screens */
+    }
+
+    .transaction-list, .transaction-details {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .transaction-list {
+        max-height: 200px; /* Reduce height for smaller screens */
+    }
+}
+
+.transaction-details #transactionDetails {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}
+
+#transactionDetails .flexWrap {
+    width: 100%;
+    display: flex;
+}
+.flexWrap div {
+    margin: auto;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    #transactionDetails .flexWrap {
+        display: block;
+    }
+}
+
+#transactionDetails .editing {
+    width: 100%;
+    display:none;
+    text-align: center;
+}
+
+#transactionDetails .nonediting {
+    display: block;
+    width: 100%;
+}
+
+#transactionDetails.edit .editing {
+    display: block;
+}
+
+#transactionDetails.edit .nonediting {
+    display: none;
+}
+
+.exchange-section {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.exchange-container {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 700px;
+}
+
+.exchange-container select,
+
+.exchange-container input {
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    .exchange-container {
+        display: inline-block;
+        text-align: center;
+        width: 100%;
+    }
+    .exchange-container select {
+        width: 100%;
+    }
+
+    .exchange-container input {
+        width: 100%;
+    }
+}
+
+.exchange-container button:hover {
+    background-color: #45a049;
+}
+
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #222224;
@@ -183,9 +423,18 @@ body.dark-mode button.r:hover {
     background-color: rgb(206, 21, 98);
 }
 
+body.dark-mode button.y {
+    background-color: rgb(250, 197, 51);
+}
+
+body.dark-mode button.y:hover {
+    background-color: rgb(224, 114, 63);
+}
+
 body.dark-mode input {
     background-color: rgb(72, 71, 83);
-    border: none;
+    color: rgb(235, 237, 247);
+    border: 1px solid rgb(72, 71, 83);
 }
 
 body.dark-mode input::placeholder {
@@ -195,7 +444,13 @@ body.dark-mode input::placeholder {
 
 body.dark-mode textarea {
     background-color: rgb(72, 71, 83);
-    border: none;
+    color: rgb(235, 237, 247);
+    border: 1px solid rgb(72, 71, 83);
+}
+body.dark-mode #dataInput {
+    background-color: #222224;
+    color: rgb(235, 237, 247);
+    border: 1px solid #222224;
 }
 
 body.dark-mode textarea::placeholder {
@@ -204,14 +459,63 @@ body.dark-mode textarea::placeholder {
 }
 
 body.dark-mode .currency {
-    border: none;
+    border: 1px solid #111113;
     background-color: #111113;
 }
 
 body.dark-mode #walletNameInput {
-    border: none;
+    border: 1px solid rgb(72, 71, 83);
 }
 
 body.dark-mode .watermark {
     color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .transaction-list, body.dark-mode .transaction-details {
+    background-color: rgb(72, 71, 83);
+    border: none;
+}
+
+body.dark-mode .transaction-list li {
+    background-color: #52a577;
+}
+
+body.dark-mode .transaction-list li:hover {
+    background-color: #417a88;
+}
+
+body.dark-mode textarea {
+    background-color: #161618;
+    border: 1px solid #161618;
+    color: rgb(235, 238, 243);
+}
+
+body.dark-mode input {
+    background-color: #161618;
+    border: 1px solid #161618;
+    color: rgb(235, 238, 243);
+}
+
+body.dark-mode select {
+    background-color: #161618;
+    border: 1px solid #161618;
+    color: rgb(235, 238, 243);
+}
+
+body.dark-mode .transaction-list li.selected {
+    background-color: #158d79;
+}
+body.dark-mode .transaction-list li.selected:hover {
+    background-color: #0d704f;
+}
+
+body.dark-mode .exchange-container input {
+    border: 1px solid #111113;
+    background-color: #111113;
+    color: rgb(235, 238, 243);
+}
+body.dark-mode .exchange-container select {
+    border: 1px solid #111113;
+    background-color: #111113;
+    color: rgb(235, 238, 243);
 }
